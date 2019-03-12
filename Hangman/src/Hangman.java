@@ -25,30 +25,36 @@ public class Hangman {
             if (kulunudAeg(algusaeg) > 30) {
                 break;
             }
-            String sona = sonad.get(suvalineArv(0, sonad.size()));
+            String a = sonad.get(suvalineArv(0, sonad.size()));
+            Sona sõna = new Sona(new StringBuilder(a));
 
-            sonaArvamine(algusaeg, profiil, sona);
-            System.out.println("uus");
+            sonaArvamine(algusaeg, profiil, sõna);
         }
     }
 
 
     //sõna arvamise loop
-    public static void sonaArvamine(double algusaeg, Mangija profiil, String sona){
+    public static void sonaArvamine(double algusaeg, Mangija profiil, Sona sõna){
         while (true){
             if (kulunudAeg(algusaeg) > 30) {
                 break;
             }
-
-            //ns testing
-            System.out.println("Praegune sõna, mis on arvamisel: " + sona);
+            System.out.println("Vastuse võimaluse on: " + sõna.getTähed());
+            System.out.println(sõna.getSona());    //näitab sõna sulle ette praegu, mis on arvamisel
+            System.out.println("Praegune sõna, mis on arvamisel: " + "\n" + sõna.peidetudTahtedega());
             Scanner scan = new Scanner(System.in);
-            System.out.println("Sisesta saadud punkte: ");
-            int k = Integer.valueOf(scan.next());
-            profiil.setSkoor(k);    //liidab skoorile juurde
-            if (k == 10) {break;}   // praegu kui 10 sisestad siis arvab nagu sõna oleks ära arvatud ja läheb sellest loopist välja korraks
+            System.out.println("Sisesta täht: ");
+            char ch = Character.toUpperCase(scan.next().charAt(0));
+            if(sõna.getTähed().contains(ch)){
+                sõna.taheEemaldus(ch);
+            }
+            if (sõna.allKriipuSisalduvus()){
+                System.out.println("Tubli, arvasid sõna ära: " + sõna.getSona() + "\n");
+                break;
+            }
         }
     }
+
 
 
 
