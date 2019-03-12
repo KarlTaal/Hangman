@@ -2,13 +2,11 @@ public class Mangija {
     final private String nimi;
     private int skoor;
     private int arvatudSonu;
-    private int vigu;
 
-    public Mangija(String nimi, int skoor, int arvatudSonu, int vigu) {
+    public Mangija(String nimi, int skoor, int arvatudSonu) {
         this.nimi = nimi;
         this.skoor = skoor;
         this.arvatudSonu = arvatudSonu;
-        this.vigu = vigu;
     }
 
     public void setSkoor(int skoor) {
@@ -25,7 +23,6 @@ public class Mangija {
                 "nimi='" + nimi + '\'' +
                 ", skoor=" + skoor +
                 ", arvatudSonu=" + arvatudSonu +
-                ", vigu=" + vigu +
                 '}';
     }
 }
