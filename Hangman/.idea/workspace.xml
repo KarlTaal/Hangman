@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="64c6e6f1-8d67-4953-8f8d-d38f8ac689e7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hangman/Hangman.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hangman/Hangman.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hangman/META-INF/Hangman.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Hangman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hangman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mangija.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mangija.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sona.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Hangman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="623">
-              <caret line="62" column="58" lean-forward="true" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
+            <state relative-caret-position="342">
+              <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,21 +36,18 @@
                 <element signature="e#380#381#0" expanded="true" />
                 <element signature="e#417#418#0" expanded="true" />
                 <element signature="e#449#450#0" expanded="true" />
-                <element signature="e#296#297#0" expanded="true" />
-                <element signature="e#324#325#0" expanded="true" />
+                <element signature="e#614#615#0" expanded="true" />
                 <element signature="e#648#649#0" expanded="true" />
-                <element signature="e#392#393#0" expanded="true" />
-                <element signature="e#439#440#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Sona.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="102">
+              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -88,9 +81,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="639" />
-    <option name="y" value="-1080" />
-    <option name="width" value="1288" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -100,26 +92,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Hangman" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hangman" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Hangman" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hangman" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -180,14 +153,16 @@
       <workItem from="1552326176465" duration="25000" />
       <workItem from="1552393313446" duration="6158000" />
       <workItem from="1552903733868" duration="11532000" />
+      <workItem from="1552937731360" duration="192000" />
+      <workItem from="1553023796590" duration="984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29364000" />
+    <option name="totallyTimeSpent" value="30540000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="639" y="-1080" width="1288" height="1047" extended-state="0" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.27899343" />
@@ -235,16 +210,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TEst.java" />
-    <entry file="file://$PROJECT_DIR$/src/Hangman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="62" column="58" lean-forward="true" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mangija.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -254,19 +219,26 @@
             <element signature="e#380#381#0" expanded="true" />
             <element signature="e#417#418#0" expanded="true" />
             <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#296#297#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
             <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sona.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="102">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hangman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

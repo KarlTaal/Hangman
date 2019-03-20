@@ -60,6 +60,7 @@ public class Hangman {
                 sõna.taheEemaldus(ch);           // ja selle tulemusel muutub ka kohe peidetudTahtedega meetodi tagastus
             }
             if (sõna.allKriipuSisalduvus()){//kui ühtegi allkriipsu pole enam, siis see tähendab et sõna on arvatud ja võetakse ette uus sõna|
+                profiil.setViga(0);
                 profiil.setSkoor(profiil.getSkoor()+(25));
                 profiil.setArvatudSonu(profiil.getArvatudSonu()+1);
                 System.out.println("Tubli, arvasid sõna ära: " + sõna.getSona() + "\n");
