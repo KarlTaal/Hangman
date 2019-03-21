@@ -68,13 +68,15 @@ public class Hangman {
         long algusaeg = System.nanoTime();
         while (true) {
             if (kulunudAeg(algusaeg) > 240) {
+                t.lisaMangija(profiil);
                 break;
             }
             String a = sonad.get(suvalineArv(0, sonad.size()));
             Sona sõna = new Sona(new StringBuilder(a), 0);
-
             sonaArvamine(algusaeg, profiil, sõna, t);
+
         }
+
         System.out.println("AEG SAI OTSA!");
         System.out.println();
     }
@@ -84,7 +86,6 @@ public class Hangman {
     public static void sonaArvamine(double algusaeg, Mangija profiil, Sona sõna, Edetabel t) {
         while (true) {
             if (kulunudAeg(algusaeg) > 240) {
-                t.lisaMangija(profiil);
                 break;
             }
             System.out.println("Vastuse võimalused on: " + sõna.getTähed());
@@ -114,6 +115,7 @@ public class Hangman {
                 break;
             }
             if (sõna.getViga() == 5) {
+                System.out.println("Õige vastus oli " + sõna.getSona() + ".");
                 System.out.println("----------------------------------------------------------------------------------------------------");
                 System.out.println("Proovime uue sõnaga!");
                 break;
