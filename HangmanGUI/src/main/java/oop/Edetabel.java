@@ -1,3 +1,5 @@
+package oop;
+
 import java.io.*;
 import java.util.*;
 
@@ -45,7 +47,7 @@ public class Edetabel {
     //kirjutab praegused kõik edetabelis olevad mängijad faili
     public void kirjutaFaili() throws Exception {
         File fail = new File("Edetabel.txt");
-        try (java.io.PrintWriter f = new java.io.PrintWriter(fail, "UTF-8")) {
+        try (PrintWriter f = new PrintWriter(fail, "UTF-8")) {
             for (Mangija mangija : this.tabel) {
                 f.println(mangija.getNimi() + " " + mangija.getSkoor() + " " + mangija.getArvatudSonu());
             }
