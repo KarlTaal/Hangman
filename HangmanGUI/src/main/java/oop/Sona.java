@@ -12,6 +12,15 @@ public class Sona {
         this.viga = viga;
     }
 
+    public void setTähed(ArrayList<Character> tähed) {
+        this.tähed = tähed;
+    }
+
+
+    public void algseadistaTähed() {
+        this.tähed = new ArrayList<>(Arrays.asList('A', 'B', 'D', 'E', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'Ä', 'Õ', 'Ö', 'Ü'));
+    }
+
     public int getViga() {
         return viga;
     }
@@ -27,7 +36,7 @@ public class Sona {
 
 
     //Tagastab sõna varjatud kohtadega, kui tähte on tähed listis olemas, siis kuvab seda kohta kui _ .
-    public StringBuilder peidetudTahtedega() {
+    /*public StringBuilder peidetudTahtedega() {
         StringBuilder varjatud = new StringBuilder(this.sona);
         for (int i = 0; i < this.sona.length(); i++) {
             if (tähed.contains(varjatud.charAt(i))) {
@@ -35,16 +44,31 @@ public class Sona {
             }
         }
         return varjatud;
+    }*/
+
+
+    public StringBuilder peidetudTahtedega() {
+        StringBuilder varjatud = new StringBuilder(this.sona);
+        for (int i = 1; i < varjatud.length(); i++) {
+            varjatud.insert(i, " ");
+            i++;
+        }
+        for (int i = 0; i < varjatud.length(); i++) {
+            if (tähed.contains(varjatud.charAt(i))) {
+                varjatud.setCharAt(i, '_');
+            }
+        }
+        return varjatud;
     }
+
 
     public ArrayList<Character> getTähed() {
         return tähed;
     }
 
-
     //tagastab tõeväärtuse, kas on jäänud veel tähti arvata
     public Boolean allKriipuSisalduvus() {
-        return !peidetudTahtedega().toString().contains("_");
+        return peidetudTahtedega().toString().contains("_");
     }
 
 
@@ -52,6 +76,28 @@ public class Sona {
         return sona;
     }
 
+    public void setSona(StringBuilder sona) {
+        this.sona = sona;
+    }
+
+    public String allesJaanudTahed() {
+        String jaanud = "";
+        for (Character character : this.tähed) {
+            if (this.sona.indexOf(character.toString()) != -1) {
+                jaanud += character;
+            }
+        }
+        return jaanud;
+    }
+
+    public String annaSuvalinetäht() {
+        int indeks = suvalineArv(0, allesJaanudTahed().length() - 1);
+        return "" + allesJaanudTahed().charAt(indeks);
+    }
+
+    public Integer suvalineArv(int alumine, int ulemine) {
+        return (alumine + (int) (Math.random() * ((ulemine - alumine) + 1)));
+    }
 
     //tagastab dongeri vastavalt vigade arvule
     public String dongerRating(int viga) {

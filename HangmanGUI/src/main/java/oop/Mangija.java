@@ -1,7 +1,7 @@
 package oop;
 
 public class Mangija implements Comparable<Mangija> {
-    final private String nimi;
+    private String nimi;
     private int skoor;
     private int arvatudSonu;
 
@@ -9,6 +9,10 @@ public class Mangija implements Comparable<Mangija> {
         this.nimi = nimi;
         this.skoor = skoor;
         this.arvatudSonu = arvatudSonu;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
     }
 
     public int getSkoor() {
