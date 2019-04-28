@@ -21,6 +21,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage peaLava) throws Exception {
+
         peaLava.setTitle("Poomismäng");
         peaLava.setScene(mänguStseen());
         peaLava.show();
@@ -29,6 +30,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 
     //Stseen mänguajaks, kui käib sõnade arvamine.
     public static Scene mänguStseen() throws Exception {
@@ -42,13 +44,15 @@ public class Main extends Application {
         Sona sona = new Sona(new StringBuilder(koikSonad.annaSõna()), 0);
 
         Text arvatav = new Text(sona.peidetudTahtedega().toString());
-        System.out.println(sona.getSona());
+        //System.out.println(sona.getSona());
 
         StackPane kesk = new StackPane();
+
         arvatav.scaleXProperty().bind(Bindings.divide(juur.widthProperty(), 300));
         arvatav.scaleYProperty().bind(Bindings.divide(arvatav.scaleXProperty(), 1));
+
         kesk.getChildren().add(arvatav);
-        juur.setCenter(kesk);
+        juur.setCenter(arvatav);
 
         Scene stseen = new Scene(juur, 1000, 700);
 
@@ -95,28 +99,37 @@ public class Main extends Application {
             button.setMinSize(50, 50);
             button.prefWidthProperty().bind(Bindings.divide(h1.widthProperty(), 12));
             button.prefHeightProperty().bind(button.prefWidthProperty());
+
+            button.widthProperty().addListener(me ->{
+                int uusFont = (int)button.getWidth();
+                button.setFont(new Font(uusFont/5));
+            });
+
             button.setOnMouseClicked(me -> {
                 String nupuTäht = button.getText();
                 if (sona.getTähed().contains(nupuTäht.charAt(0)) && sona.getSona().toString().contains(nupuTäht)) {
                     mangija.setSkoor(mangija.getSkoor() + 10);
                     skoor.setText("Skoor: " + mangija.getSkoor());
+                    GaussianBlur blur = new GaussianBlur();
+                    button.setEffect(blur);
+                    sona.taheEemaldus(button.getText().charAt(button.getText().length()-1));
+                    arvatav.setText(sona.peidetudTahtedega().toString());
                 }
                 if(sona.getTähed().contains(nupuTäht.charAt(0)) && !sona.getSona().toString().contains(nupuTäht)){
                     sona.setViga(sona.getViga() + 1);
                     vigu.setText("Vead: " + sona.getViga());
                     mangija.setSkoor(mangija.getSkoor() - 5);
                     skoor.setText("Skoor: " + mangija.getSkoor());
+                    GaussianBlur blur = new GaussianBlur();
+                    button.setEffect(blur);
+                    sona.taheEemaldus(button.getText().charAt(0));
+                    arvatav.setText(sona.peidetudTahtedega().toString());
                     if(sona.getViga() == 7){
                         uusSõna(sona, koiksonad, arvatav, h1, h2);
                         vigu.setText("Vead: " + sona.getViga());
                         arvatav.setText(sona.peidetudTahtedega().toString());
                     }
                 }
-                GaussianBlur blur = new GaussianBlur();
-                button.setEffect(blur);
-                sona.taheEemaldus(button.getText().charAt(0));
-                arvatav.setText(sona.peidetudTahtedega().toString());
-
             });
 
             if (i < 12) {
@@ -142,6 +155,10 @@ public class Main extends Application {
         for (Button button : n) {
             button.prefWidthProperty().bind(Bindings.divide(stseen.widthProperty(), 5));
             button.prefHeightProperty().bind(Bindings.divide(stseen.heightProperty(), 10));
+            button.widthProperty().addListener(me ->{
+                int uusFont = (int)button.getWidth();
+                button.setFont(new Font(uusFont/15));
+            });
         }
 
         //Praegu paneb programmi kinni lihtsalt, hiljem peaks algmenüü juurde tagasi viskama sind.
@@ -191,7 +208,7 @@ public class Main extends Application {
     public static void uusSõna(Sona sona, koikSonad koiksonad, Text arvatav, HBox h1, HBox h2) {
         sona.setSona(new StringBuilder(koiksonad.annaSõna()));
         sona.setViga(0);
-        System.out.println(sona.getSona());
+        //System.out.println(sona.getSona());
         sona.algseadistaTähed();
         arvatav.setText(sona.peidetudTahtedega().toString());
         for (Node child : h1.getChildren()) {
@@ -205,7 +222,7 @@ public class Main extends Application {
 
     //Aeg tiksub hetkel lihtsalt, pole rakendanud seda veel. Lisab rakenduse, siis kui menüü stseenid jms ka valmis on.
     public static void Timer(BorderPane juur) {
-        Integer STARTTIME = 60;
+        Integer STARTTIME = 120;
         Label timerLabel = new Label();
         IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
 

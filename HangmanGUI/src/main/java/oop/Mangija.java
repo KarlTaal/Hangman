@@ -32,7 +32,7 @@ public class Mangija implements Comparable<Mangija> {
     }
 
     public void setArvatudSonu(int arvatudSonu) {
-        this.arvatudSonu += arvatudSonu;
+        this.arvatudSonu = arvatudSonu;
     }
 
     //meetod, mis ütleb mille järgi sorteerida
