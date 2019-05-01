@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage peaLava) throws Exception {
 
         peaLava.setTitle("Poomismäng");
-        peaLava.setScene(mänguStseen());
+        peaLava.setScene(mänguStseen(peaLava));
         peaLava.show();
     }
 
@@ -31,9 +31,25 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static Scene mänguLõpp(Mangija profiil, Stage peaLava) {
+        BorderPane juur = new BorderPane();
+
+        Label pealkiri = new Label("TULEMUS");
+        pealkiri.setStyle("-fx-border-color: black;");
+
+        juur.widthProperty().addListener(me -> {
+            pealkiri.setFont(new Font(juur.getWidth() / 15));
+        });
+
+        StackPane st = new StackPane();
+        st.getChildren().add(pealkiri);
+        juur.setTop(st);
+        Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
+        return stseen;
+    }
 
     //Stseen mänguajaks, kui käib sõnade arvamine.
-    public static Scene mänguStseen() throws Exception {
+    public static Scene mänguStseen(Stage peaLava) throws Exception {
 
         BorderPane juur = new BorderPane();
 
@@ -57,16 +73,18 @@ public class Main extends Application {
         Scene stseen = new Scene(juur, 1000, 700);
 
         NupudjaInfo(sona, arvatav, juur, stseen, koikSonad, mangija);
-        Timer(juur);
+        Timer(juur, peaLava, mangija);
 
         return stseen;
 
     }
 
     //Loob, kuvab ja haldab tegevusi, mis on seatud mängus olevate nuppude ja infoga.
-    public static void NupudjaInfo(Sona sona, Text arvatav, BorderPane juur, Scene stseen, koikSonad koiksonad, Mangija mangija) throws Exception {
+    public static void NupudjaInfo(Sona sona, Text arvatav, BorderPane juur, Scene stseen, koikSonad koiksonad, Mangija mangija) {
         ////////////////////////////////////////////// paremal oleva info kood
         VBox info = new VBox();
+        // info.setStyle("-fx-border-color: black;");
+
         info.setSpacing(10);
         info.setPadding(new Insets(100, 100, 5, 10));
         Label skoor = new Label("Skoor: 0");
@@ -81,6 +99,7 @@ public class Main extends Application {
             label.scaleYProperty().bind(label.scaleXProperty());
             info.getChildren().add(label);
         }
+
         juur.setRight(info);
 
         ////////////////////////////////////////////alumiste nuppude kood
@@ -100,9 +119,9 @@ public class Main extends Application {
             button.prefWidthProperty().bind(Bindings.divide(h1.widthProperty(), 12));
             button.prefHeightProperty().bind(button.prefWidthProperty());
 
-            button.widthProperty().addListener(me ->{
-                int uusFont = (int)button.getWidth();
-                button.setFont(new Font(uusFont/5));
+            button.widthProperty().addListener(me -> {
+                int uusFont = (int) button.getWidth();
+                button.setFont(new Font(uusFont / 5));
             });
 
             button.setOnMouseClicked(me -> {
@@ -112,10 +131,10 @@ public class Main extends Application {
                     skoor.setText("Skoor: " + mangija.getSkoor());
                     GaussianBlur blur = new GaussianBlur();
                     button.setEffect(blur);
-                    sona.taheEemaldus(button.getText().charAt(button.getText().length()-1));
+                    sona.taheEemaldus(button.getText().charAt(button.getText().length() - 1));
                     arvatav.setText(sona.peidetudTahtedega().toString());
                 }
-                if(sona.getTähed().contains(nupuTäht.charAt(0)) && !sona.getSona().toString().contains(nupuTäht)){
+                if (sona.getTähed().contains(nupuTäht.charAt(0)) && !sona.getSona().toString().contains(nupuTäht)) {
                     sona.setViga(sona.getViga() + 1);
                     vigu.setText("Vead: " + sona.getViga());
                     mangija.setSkoor(mangija.getSkoor() - 5);
@@ -124,7 +143,7 @@ public class Main extends Application {
                     button.setEffect(blur);
                     sona.taheEemaldus(button.getText().charAt(0));
                     arvatav.setText(sona.peidetudTahtedega().toString());
-                    if(sona.getViga() == 7){
+                    if (sona.getViga() == 7) {
                         uusSõna(sona, koiksonad, arvatav, h1, h2);
                         vigu.setText("Vead: " + sona.getViga());
                         arvatav.setText(sona.peidetudTahtedega().toString());
@@ -145,6 +164,7 @@ public class Main extends Application {
 
         ////////////////////////////////////////////////////// vasakul olevate nuppude kood
         VBox nupudvasakul = new VBox();
+
         nupudvasakul.setPadding(new Insets(60, 0, 5, 5));
         nupudvasakul.setSpacing(5);
         Button vasta = new Button("Vasta");
@@ -155,9 +175,9 @@ public class Main extends Application {
         for (Button button : n) {
             button.prefWidthProperty().bind(Bindings.divide(stseen.widthProperty(), 5));
             button.prefHeightProperty().bind(Bindings.divide(stseen.heightProperty(), 10));
-            button.widthProperty().addListener(me ->{
-                int uusFont = (int)button.getWidth();
-                button.setFont(new Font(uusFont/15));
+            button.widthProperty().addListener(me -> {
+                int uusFont = (int) button.getWidth();
+                button.setFont(new Font(uusFont / 15));
             });
         }
 
@@ -167,7 +187,7 @@ public class Main extends Application {
         jätaVahele.setOnMouseClicked(me -> {
             if (sona.allKriipuSisalduvus()) {
                 uusSõna(sona, koiksonad, arvatav, h1, h2);
-                mangija.setSkoor(mangija.getSkoor()-20);
+                mangija.setSkoor(mangija.getSkoor() - 20);
                 skoor.setText("Skoor: " + mangija.getSkoor());
                 vigu.setText("Vead: " + sona.getViga());
             }
@@ -184,16 +204,16 @@ public class Main extends Application {
             }
         });
 
-        vihje.setOnMouseClicked(me ->{
-            if (sona.allKriipuSisalduvus()){
+        vihje.setOnMouseClicked(me -> {
+            if (sona.allKriipuSisalduvus()) {
                 String täht = sona.annaSuvalinetäht();
                 for (Button button : koikTäheNupud) {
-                    if(button.getText().equals(täht)){
+                    if (button.getText().equals(täht)) {
                         GaussianBlur blur = new GaussianBlur();
                         button.setEffect(blur);
                         sona.taheEemaldus(button.getText().charAt(0));
                         arvatav.setText(sona.peidetudTahtedega().toString());
-                        mangija.setSkoor(mangija.getSkoor()-5);
+                        mangija.setSkoor(mangija.getSkoor() - 5);
                         skoor.setText("Skoor: " + mangija.getSkoor());
                     }
                 }
@@ -220,9 +240,9 @@ public class Main extends Application {
 
     }
 
-    //Aeg tiksub hetkel lihtsalt, pole rakendanud seda veel. Lisab rakenduse, siis kui menüü stseenid jms ka valmis on.
-    public static void Timer(BorderPane juur) {
-        Integer STARTTIME = 120;
+
+    public static void Timer(BorderPane juur, Stage peaLava, Mangija mangija) {
+        Integer STARTTIME = 60;
         Label timerLabel = new Label();
         IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
 
@@ -238,7 +258,9 @@ public class Main extends Application {
         timeline = new Timeline();
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(STARTTIME + 1), new KeyValue(timeSeconds, 0)));
         timeline.playFromStart();
-        timeline.setOnFinished(me -> System.out.println("lõppes"));
+        timeline.setOnFinished(me -> {
+            peaLava.setScene(mänguLõpp(mangija, peaLava));
+        });
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(timerLabel);
