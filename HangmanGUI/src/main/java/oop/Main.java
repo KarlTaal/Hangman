@@ -31,19 +31,65 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static Scene mänguLõpp(Mangija profiil, Stage peaLava) {
+    public static Scene mänguLõpp(Mangija profiil, Stage peaLava) throws Exception {
+        //Loob edetabeli, andmed failist sisse lugedes, lisatakse juurde uus tulemus ja kirjutatakse uuesti faili.
+        Edetabel edetabel = new Edetabel();
+        edetabel.lisaMangija(profiil);
+        edetabel.sorteeriTabel();
+        edetabel.kirjutaFaili();
+
         BorderPane juur = new BorderPane();
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setVgap(10);
+        grid.setHgap(10);
 
         Label pealkiri = new Label("TULEMUS");
-        pealkiri.setStyle("-fx-border-color: black;");
+        Button PlayAgain = new Button("Play again");
+        Button Menu = new Button("Menu");
+        Button exit = new Button("Exit");
+        Label nimi = new Label("Nimi: " + profiil.getNimi());
+        Label skoor = new Label("Skoor: " + profiil.getSkoor());
+        Label arvatudSõnu = new Label("Arvatud sõnu: " + profiil.getArvatudSonu());
+
+        PlayAgain.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 5));
+        PlayAgain.prefHeightProperty().bind(Bindings.divide(juur.heightProperty(), 10));
+        Menu.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 5));
+        Menu.prefHeightProperty().bind(Bindings.divide(juur.heightProperty(), 10));
+        exit.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 5));
+        exit.prefHeightProperty().bind(Bindings.divide(juur.heightProperty(), 10));
 
         juur.widthProperty().addListener(me -> {
             pealkiri.setFont(new Font(juur.getWidth() / 15));
+            nimi.setFont(new Font(juur.getWidth() / 25));
+            skoor.setFont(new Font(juur.getWidth() / 25));
+            arvatudSõnu.setFont(new Font(juur.getWidth() / 25));
+            Menu.setFont(new Font(juur.getWidth() / 30));
+            PlayAgain.setFont(new Font(juur.getWidth() / 30));
+            exit.setFont(new Font(juur.getWidth() / 30));
+
         });
 
+        PlayAgain.setOnMouseClicked(me -> {
+            try {
+                peaLava.setScene(mänguStseen(peaLava));
+            } catch (Exception e) {
+                System.out.println(e.getCause());
+            }
+        });
+
+        exit.setOnMouseClicked(me -> System.exit(0));
+
+        grid.add(nimi, 0, 0);
+        grid.add(skoor, 0, 1);
+        grid.add(arvatudSõnu, 0, 2);
+        grid.add(PlayAgain, 1, 0);
+        grid.add(Menu, 1, 1);
+        grid.add(exit, 1, 2);
         StackPane st = new StackPane();
         st.getChildren().add(pealkiri);
         juur.setTop(st);
+        juur.setCenter(grid);
         Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
         return stseen;
     }
@@ -82,22 +128,23 @@ public class Main extends Application {
     //Loob, kuvab ja haldab tegevusi, mis on seatud mängus olevate nuppude ja infoga.
     public static void NupudjaInfo(Sona sona, Text arvatav, BorderPane juur, Scene stseen, koikSonad koiksonad, Mangija mangija) {
         ////////////////////////////////////////////// paremal oleva info kood
-        VBox info = new VBox();
-        // info.setStyle("-fx-border-color: black;");
+        GridPane info = new GridPane();
 
-        info.setSpacing(10);
-        info.setPadding(new Insets(100, 100, 5, 10));
+        info.setAlignment(Pos.CENTER);
+        info.setPadding(new Insets(0, 35, 0, 0));
         Label skoor = new Label("Skoor: 0");
         Label arvatud = new Label("Arvatud: 0");
         Label vigu = new Label("Vead: 0");
+        info.add(skoor, 0, 0);
+        info.add(arvatud, 0, 1);
+        info.add(vigu, 0, 2);
         Label[] infotekstid = {skoor, arvatud, vigu};
         for (Label label : infotekstid) {
             //label.setStyle("-fx-border-color: black;");
-            label.prefHeightProperty().bind(Bindings.divide(juur.heightProperty(), 20));
-            label.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 10));
-            label.scaleXProperty().bind(Bindings.divide(label.prefWidthProperty(), 50));
-            label.scaleYProperty().bind(label.scaleXProperty());
-            info.getChildren().add(label);
+            label.setFont(new Font(juur.getWidth() / 25));
+            juur.widthProperty().addListener(me -> {
+                label.setFont(new Font(juur.getWidth() / 25));
+            });
         }
 
         juur.setRight(info);
@@ -259,7 +306,11 @@ public class Main extends Application {
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(STARTTIME + 1), new KeyValue(timeSeconds, 0)));
         timeline.playFromStart();
         timeline.setOnFinished(me -> {
-            peaLava.setScene(mänguLõpp(mangija, peaLava));
+            try {
+                peaLava.setScene(mänguLõpp(mangija, peaLava));
+            } catch (Exception e) {
+                System.out.println(e.getCause());
+            }
         });
 
         StackPane stackPane = new StackPane();

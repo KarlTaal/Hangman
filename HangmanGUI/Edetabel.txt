@@ -1,0 +1,6 @@
+Juhan 15 1
+Juhan 10 0
+Juhan -5 0
+Juhan -10 0
+Juhan -120 1
+Juhan -1240 0
