@@ -20,15 +20,85 @@ import java.util.*;
 public class Main extends Application {
 
     @Override
-    public void start(Stage peaLava) throws Exception {
-
+    public void start(Stage peaLava) {
         peaLava.setTitle("Poomismäng");
-        peaLava.setScene(mänguStseen(peaLava));
+        peaLava.setWidth(1000);
+        peaLava.setHeight(700);
+        peaLava.setScene(nimeKüsimine(peaLava));
         peaLava.show();
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Scene nimeKüsimine(Stage peaLava) {
+        BorderPane juur = new BorderPane();
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(5);
+        grid.setVgap(5);
+
+        Label info = new Label("Sisesta siia oma mängija nimi");
+        Button alustaMängu = new Button("Alusta mängu");
+        TextField tf = new TextField();
+        Label info2 = new Label("Nimi ei tohi sisaldada tühikuid!");
+        Label info3 = new Label("Pead nime valima alustamiseks!");
+        Label info4 = new Label("Vali lühem nimi palun!");
+
+        info.setAlignment(Pos.CENTER);
+        info2.setAlignment(Pos.CENTER);
+        info3.setAlignment(Pos.CENTER);
+        info4.setAlignment(Pos.CENTER);
+        tf.setAlignment(Pos.CENTER);
+
+        juur.widthProperty().addListener(me -> {
+            alustaMängu.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            tf.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            info.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            info2.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            info3.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            info4.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 2 + 1));
+            alustaMängu.setFont(new Font(juur.getWidth() / 30));
+            tf.setFont(new Font(juur.getWidth() / 30));
+            info.setFont(new Font(juur.getWidth() / 40));
+            info2.setFont(new Font(juur.getWidth() / 45));
+            info3.setFont(new Font(juur.getWidth() / 45));
+            info4.setFont(new Font(juur.getWidth() / 45));
+
+        });
+
+        alustaMängu.setOnMouseClicked(me -> {
+            if (!tf.getText().equals("") && !tf.getText().contains(" ") && tf.getText().length() <= 15) {
+                try {
+                    peaLava.setScene(mänguStseen(peaLava, tf.getText()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (tf.getText().equals("")) {
+                if (grid.getChildren().size() == 4) {
+                    grid.getChildren().remove(3);
+                }
+                grid.add(info3, 0, 3);
+            } else if (tf.getText().contains(" ")) {
+                if (grid.getChildren().size() == 4) {
+                    grid.getChildren().remove(3);
+                }
+                grid.add(info2, 0, 3);
+            } else if (tf.getText().length() > 15) {
+                if (grid.getChildren().size() == 4) {
+                    grid.getChildren().remove(3);
+                }
+                grid.add(info4, 0, 3);
+            }
+        });
+
+        grid.add(info, 0, 0);
+        grid.add(tf, 0, 1);
+        grid.add(alustaMängu, 0, 2);
+        juur.setCenter(grid);
+        Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
+        return stseen;
     }
 
     public static Scene mänguLõpp(Mangija profiil, Stage peaLava) throws Exception {
@@ -72,7 +142,7 @@ public class Main extends Application {
 
         PlayAgain.setOnMouseClicked(me -> {
             try {
-                peaLava.setScene(mänguStseen(peaLava));
+                peaLava.setScene(nimeKüsimine(peaLava));
             } catch (Exception e) {
                 System.out.println(e.getCause());
             }
@@ -95,12 +165,12 @@ public class Main extends Application {
     }
 
     //Stseen mänguajaks, kui käib sõnade arvamine.
-    public static Scene mänguStseen(Stage peaLava) throws Exception {
+    public static Scene mänguStseen(Stage peaLava, String mängijanimi) throws Exception {
 
         BorderPane juur = new BorderPane();
 
         //Kui on algmenüü stseen ja nime sisestamine stseen ka tehtud, siis tuleks parameetrina anda kaasa see nimi ja siin kasutada.
-        Mangija mangija = new Mangija("Juhan", 0, 0);
+        Mangija mangija = new Mangija(mängijanimi, 0, 0);
 
         koikSonad koikSonad = new koikSonad();
         Sona sona = new Sona(new StringBuilder(koikSonad.annaSõna()), 0);
@@ -116,7 +186,7 @@ public class Main extends Application {
         kesk.getChildren().add(arvatav);
         juur.setCenter(arvatav);
 
-        Scene stseen = new Scene(juur, 1000, 700);
+        Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
 
         NupudjaInfo(sona, arvatav, juur, stseen, koikSonad, mangija);
         Timer(juur, peaLava, mangija);

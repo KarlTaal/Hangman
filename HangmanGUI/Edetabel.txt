@@ -1,6 +1,11 @@
-Juhan 15 1
-Juhan 10 0
-Juhan -5 0
-Juhan -10 0
-Juhan -120 1
-Juhan -1240 0
+Karl 225 5
+Karl 195 4
+Karel 175 3
+Karl 165 4
+Juhan 155 3
+Karl 150 4
+Tiini 140 2
+Karel 115 1
+Karel 110 2
+tester -5 1
+megatron -5 1
