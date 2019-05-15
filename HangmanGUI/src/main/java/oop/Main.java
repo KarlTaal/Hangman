@@ -39,7 +39,7 @@ public class Main extends Application {
         BorderPane juur = new BorderPane();
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(5);
+        grid.setHgap(4+1);
         grid.setVgap(5);
 
         Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
@@ -53,25 +53,24 @@ public class Main extends Application {
 
         juur.widthProperty().addListener(me -> {
             mang.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
-            exit.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            exit.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 2 + 1));
             scoreb.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             mang.setFont(new Font(juur.getWidth() / 30));
-            scoreb.setFont(new Font(juur.getWidth() / 30));
+            scoreb.setFont(new Font(juur.getWidth() / (25 + 5)));
             exit.setFont(new Font(juur.getWidth() / 30));
 
         });
         mang.setOnMouseClicked(me -> {
             peaLava.setScene(nimeKüsimine(peaLava));
-
-                });
+        });
         exit.setOnMouseClicked(me -> {
             exit();
 
         });
 
         grid.add(mang, 0, 0);
-        grid.add(scoreb, 0, 1);
-        grid.add(exit,0,2);
+        grid.add(scoreb, 0, 2 - 1);
+        grid.add(exit, 0, 1 + 1);
         juur.setCenter(grid);
         Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
         return stseen;
@@ -197,6 +196,10 @@ public class Main extends Application {
 
         exit.setOnMouseClicked(me -> System.exit(0));
 
+        Menu.setOnMouseClicked(me -> {
+            peaLava.setScene(mainMenu(peaLava));
+        });
+
         grid.add(nimi, 0, 0);
         grid.add(skoor, 0, 1);
         grid.add(arvatudSõnu, 0, 2);
@@ -238,12 +241,12 @@ public class Main extends Application {
         NupudjaInfo(sona, arvatav, juur, stseen, koikSonad, mangija);
         Timer(juur, peaLava, mangija);
 
-        return  stseen;
+        return stseen;
 
     }
 
-    public static void edutabel(Scene scene){
-        
+    public static void edutabel(Scene scene) {
+
     }
 
     //Loob, kuvab ja haldab tegevusi, mis on seatud mängus olevate nuppude ja infoga.
@@ -297,8 +300,7 @@ public class Main extends Application {
                 if (sona.getTähed().contains(nupuTäht.charAt(0)) && sona.getSona().toString().contains(nupuTäht)) {
                     mangija.setSkoor(mangija.getSkoor() + 10);
                     skoor.setText("Skoor: " + mangija.getSkoor());
-                    GaussianBlur blur = new GaussianBlur();
-                    button.setEffect(blur);
+                    button.setVisible(false);
                     sona.taheEemaldus(button.getText().charAt(button.getText().length() - 1));
                     arvatav.setText(sona.peidetudTahtedega().toString());
                 }
@@ -307,8 +309,7 @@ public class Main extends Application {
                     vigu.setText("Vead: " + sona.getViga());
                     mangija.setSkoor(mangija.getSkoor() - 5);
                     skoor.setText("Skoor: " + mangija.getSkoor());
-                    GaussianBlur blur = new GaussianBlur();
-                    button.setEffect(blur);
+                    button.setVisible(false);
                     sona.taheEemaldus(button.getText().charAt(0));
                     arvatav.setText(sona.peidetudTahtedega().toString());
                     if (sona.getViga() == 7) {
@@ -377,8 +378,7 @@ public class Main extends Application {
                 String täht = sona.annaSuvalinetäht();
                 for (Button button : koikTäheNupud) {
                     if (button.getText().equals(täht)) {
-                        GaussianBlur blur = new GaussianBlur();
-                        button.setEffect(blur);
+                        button.setVisible(false);
                         sona.taheEemaldus(button.getText().charAt(0));
                         arvatav.setText(sona.peidetudTahtedega().toString());
                         mangija.setSkoor(mangija.getSkoor() - 5);
@@ -400,17 +400,17 @@ public class Main extends Application {
         sona.algseadistaTähed();
         arvatav.setText(sona.peidetudTahtedega().toString());
         for (Node child : h1.getChildren()) {
-            child.setEffect(null);
+            child.setVisible(true);
         }
         for (Node child : h2.getChildren()) {
-            child.setEffect(null);
+            child.setVisible(true);
         }
 
     }
 
 
     public static void Timer(BorderPane juur, Stage peaLava, Mangija mangija) {
-        Integer STARTTIME = 60;
+        Integer STARTTIME = 5;  //Aeg sekundites.
         Label timerLabel = new Label();
         IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
 

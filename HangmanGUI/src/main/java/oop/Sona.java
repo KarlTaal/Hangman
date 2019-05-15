@@ -34,19 +34,6 @@ public class Sona {
         this.tähed.remove(x);
     }
 
-
-    //Tagastab sõna varjatud kohtadega, kui tähte on tähed listis olemas, siis kuvab seda kohta kui _ .
-    /*public StringBuilder peidetudTahtedega() {
-        StringBuilder varjatud = new StringBuilder(this.sona);
-        for (int i = 0; i < this.sona.length(); i++) {
-            if (tähed.contains(varjatud.charAt(i))) {
-                varjatud.setCharAt(i, '_');
-            }
-        }
-        return varjatud;
-    }*/
-
-
     public StringBuilder peidetudTahtedega() {
         StringBuilder varjatud = new StringBuilder(this.sona);
         for (int i = 1; i < varjatud.length(); i++) {
