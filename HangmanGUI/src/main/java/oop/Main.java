@@ -52,6 +52,7 @@ public class Main extends Application {
 
         Button mang = new Button("Alusta mängu");
         Button scoreb = new Button("Edetabel");
+        Button intro = new Button("Edetabel");
         Button exit = new Button("Exit");
 
 
@@ -59,9 +60,11 @@ public class Main extends Application {
             mang.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             exit.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 2 + 1));
             scoreb.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            intro.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             mang.setFont(new Font(juur.getWidth() / 30));
             scoreb.setFont(new Font(juur.getWidth() / (25 + 5)));
             exit.setFont(new Font(juur.getWidth() / 30));
+            intro.setFont(new Font(juur.getWidth() / 30));
 
         });
         mang.setOnMouseClicked(me -> {
@@ -70,6 +73,9 @@ public class Main extends Application {
         exit.setOnMouseClicked(me -> {
             exit();
 
+        });
+        intro.setOnMouseClicked(me -> {
+            peaLava.setScene(nimeKüsimine(peaLava));
         });
         scoreb.setOnMouseClicked(me -> {
             try {
@@ -81,7 +87,8 @@ public class Main extends Application {
 
         grid.add(mang, 0, 0);
         grid.add(scoreb, 0, 2 - 1);
-        grid.add(exit, 0, 1 + 1);
+        grid.add(intro,0,2);
+        grid.add(exit, 0, 1 + 1+1);
         juur.setCenter(grid);
         Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
         return stseen;
