@@ -35,7 +35,7 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static Scene mainMenu(Stage peaLava) {
+    public static Scene mainMenu(Stage peaLava) { //esmane menüü mis avab kui programmi valid ja siis saad vastavad valikud teha.
         BorderPane juur = new BorderPane();
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -240,6 +240,10 @@ public class Main extends Application {
 
         return  stseen;
 
+    }
+
+    public static void edutabel(Scene scene){
+        
     }
 
     //Loob, kuvab ja haldab tegevusi, mis on seatud mängus olevate nuppude ja infoga.
