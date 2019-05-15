@@ -14,6 +14,10 @@ import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.util.*;
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.*;
 
 import static javafx.application.Platform.exit;
@@ -67,6 +71,13 @@ public class Main extends Application {
             exit();
 
         });
+        scoreb.setOnMouseClicked(me -> {
+            try {
+                peaLava.setScene(edutabel(peaLava));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         grid.add(mang, 0, 0);
         grid.add(scoreb, 0, 2 - 1);
@@ -75,6 +86,93 @@ public class Main extends Application {
         Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
         return stseen;
     }
+    public static Scene edutabel(Stage peaLava) throws IOException {
+
+        BorderPane juur = new BorderPane();
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(5);
+        grid.setVgap(5);
+
+        Label info = new Label("Nimi");
+        Label info2 = new Label("Skoor");
+        Label info3 = new Label("Arvatud sõnu");
+
+        info.setAlignment(Pos.CENTER);
+        info2.setAlignment(Pos.CENTER);
+        info3.setAlignment(Pos.CENTER);
+
+        info.setTextFill(Color.RED);
+        info2.setTextFill(Color.RED);
+        info3.setTextFill(Color.RED);
+
+        info.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(5))));
+        info2.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(5))));
+        info3.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(5))));
+
+
+        juur.widthProperty().addListener(me -> {
+            info.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            info2.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            info3.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            info.setFont(new Font(juur.getWidth() / 30));
+            info2.setFont(new Font(juur.getWidth() / 30));
+            info3.setFont(new Font(juur.getWidth() / 30));
+
+        });
+
+        File fail = new File("Edetabel.txt");
+        try (Scanner f = new Scanner(fail, "UTF-8")) {
+            int i = 0;
+            while (f.hasNextLine()) {
+                String rida = f.nextLine();
+                String[] tükid = rida.split(" ");
+                Label e = new Label(tükid[0]);
+                Label t = new Label(tükid[1]);
+                Label k = new Label(tükid[2]);
+
+                i = i+1;
+                if (i==11)
+                    break;
+
+                e.setAlignment(Pos.CENTER);
+                t.setAlignment(Pos.CENTER);
+                k.setAlignment(Pos.CENTER);
+
+                e.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2))));
+                t.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2))));
+                k.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(2))));
+
+
+                juur.widthProperty().addListener(me -> {
+                    e.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+                    t.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+                    k.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+                    e.setFont(new Font(juur.getWidth() / 40));
+                    t.setFont(new Font(juur.getWidth() / 45));
+                    k.setFont(new Font(juur.getWidth() / 45));
+                });
+
+                grid.add(e, 0, i);
+                grid.add(t, 1, i);
+                grid.add(k, 2, i);
+
+
+            }
+        }
+
+        grid.add(info, 0, 0);
+        grid.add(info2, 1, 0);
+        grid.add(info3, 2, 0);
+
+        Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
+        ColorInput input = new ColorInput();
+        blendEffect.setTopInput(input);
+        juur.setCenter(grid);
+        Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
+        return stseen;
+    }
+
 
 
     public static Scene nimeKüsimine(Stage peaLava) {
