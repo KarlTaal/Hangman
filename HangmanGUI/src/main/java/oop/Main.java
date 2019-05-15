@@ -52,7 +52,7 @@ public class Main extends Application {
 
         Button mang = new Button("Alusta mängu");
         Button scoreb = new Button("Edetabel");
-        Button intro = new Button("Edetabel");
+        Button intro = new Button("Õpetus");
         Button exit = new Button("Exit");
 
 
@@ -75,7 +75,7 @@ public class Main extends Application {
 
         });
         intro.setOnMouseClicked(me -> {
-            peaLava.setScene(nimeKüsimine(peaLava));
+            peaLava.setScene(opetus(peaLava));
         });
         scoreb.setOnMouseClicked(me -> {
             try {
@@ -93,6 +93,39 @@ public class Main extends Application {
         Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
         return stseen;
     }
+    public static Scene opetus(Stage peaLava){
+        BorderPane juur = new BorderPane();
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(5);
+        grid.setVgap(5);
+
+        Label info = new Label("Sa tegelikult ei vaja õpetust");
+        Button b = new Button("Back");
+        info.setAlignment(Pos.CENTER);
+        b.setAlignment(Pos.CENTER);
+
+        juur.widthProperty().addListener(me -> {
+            info.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(),1));
+            info.setFont(new Font(juur.getWidth() / 15));
+            b.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(),1));
+            b.setFont(new Font(juur.getWidth() / 30));
+        });
+        b.setOnMouseClicked(me -> {
+            peaLava.setScene(mainMenu(peaLava));
+        });
+
+        grid.add(info, 0, 0);
+        grid.add(b,0,1);
+
+        Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
+        ColorInput input = new ColorInput();
+        blendEffect.setTopInput(input);
+        juur.setCenter(grid);
+        Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
+        return stseen;
+    }
+
     public static Scene edutabel(Stage peaLava) throws IOException {
 
         BorderPane juur = new BorderPane();
@@ -104,6 +137,7 @@ public class Main extends Application {
         Label info = new Label("Nimi");
         Label info2 = new Label("Skoor");
         Label info3 = new Label("Arvatud sõnu");
+        Button back = new Button("Back");
 
         info.setAlignment(Pos.CENTER);
         info2.setAlignment(Pos.CENTER);
@@ -119,14 +153,17 @@ public class Main extends Application {
 
 
         juur.widthProperty().addListener(me -> {
+            back.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(),3));
             info.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             info2.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             info3.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             info.setFont(new Font(juur.getWidth() / 30));
+            back.setFont(new Font(juur.getWidth() / 30));
             info2.setFont(new Font(juur.getWidth() / 30));
             info3.setFont(new Font(juur.getWidth() / 30));
 
         });
+
 
         File fail = new File("Edetabel.txt");
         try (Scanner f = new Scanner(fail, "UTF-8")) {
@@ -167,10 +204,14 @@ public class Main extends Application {
 
             }
         }
+        back.setOnMouseClicked(me -> {
+            peaLava.setScene(mainMenu(peaLava));
+        });
 
         grid.add(info, 0, 0);
         grid.add(info2, 1, 0);
         grid.add(info3, 2, 0);
+        grid.add(back,1,11);
 
         Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
         ColorInput input = new ColorInput();

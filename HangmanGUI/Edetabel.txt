@@ -9,4 +9,5 @@ Karel 115 1
 Karel 110 2
 tester -5 1
 megatron -5 1
+adfs -30 0
 Martoolius -50 0
