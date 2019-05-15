@@ -16,6 +16,8 @@ import javafx.util.*;
 
 import java.util.*;
 
+import static javafx.application.Platform.exit;
+
 
 public class Main extends Application {
 
@@ -24,13 +26,53 @@ public class Main extends Application {
         peaLava.setTitle("Poomismäng");
         peaLava.setWidth(1000);
         peaLava.setHeight(700);
-        peaLava.setScene(nimeKüsimine(peaLava));
+        peaLava.setScene(mainMenu(peaLava));
+        //peaLava.setScene(nimeKüsimine(peaLava));
         peaLava.show();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+
+    public static Scene mainMenu(Stage peaLava) {
+        BorderPane juur = new BorderPane();
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(5);
+        grid.setVgap(5);
+
+        Button mang = new Button("Alusta mängu");
+        Button scoreb = new Button("Edetabel");
+        Button exit = new Button("Exit");
+
+
+        juur.widthProperty().addListener(me -> {
+            mang.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            exit.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            scoreb.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
+            mang.setFont(new Font(juur.getWidth() / 30));
+            scoreb.setFont(new Font(juur.getWidth() / 30));
+            exit.setFont(new Font(juur.getWidth() / 30));
+
+        });
+        mang.setOnMouseClicked(me -> {
+            peaLava.setScene(nimeKüsimine(peaLava));
+
+                });
+        exit.setOnMouseClicked(me -> {
+            exit();
+
+        });
+
+        grid.add(mang, 0, 0);
+        grid.add(scoreb, 0, 1);
+        grid.add(exit,0,2);
+        juur.setCenter(grid);
+        Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
+        return stseen;
+    }
+
 
     public static Scene nimeKüsimine(Stage peaLava) {
         BorderPane juur = new BorderPane();
@@ -140,6 +182,7 @@ public class Main extends Application {
 
         });
 
+
         PlayAgain.setOnMouseClicked(me -> {
             try {
                 peaLava.setScene(nimeKüsimine(peaLava));
@@ -191,7 +234,7 @@ public class Main extends Application {
         NupudjaInfo(sona, arvatav, juur, stseen, koikSonad, mangija);
         Timer(juur, peaLava, mangija);
 
-        return stseen;
+        return  stseen;
 
     }
 
