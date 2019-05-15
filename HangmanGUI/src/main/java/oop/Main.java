@@ -42,6 +42,10 @@ public class Main extends Application {
         grid.setHgap(5);
         grid.setVgap(5);
 
+        Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
+        ColorInput input = new ColorInput();
+        blendEffect.setTopInput(input);
+
         Button mang = new Button("Alusta mängu");
         Button scoreb = new Button("Edetabel");
         Button exit = new Button("Exit");

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Sona {
     private StringBuilder sona;
-    private ArrayList<Character> tähed = new ArrayList<>(Arrays.asList('A', 'B', 'D', 'E', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'Ä', 'Õ', 'Ö', 'Ü'));
+    private ArrayList<Character> tähed = new ArrayList<>(Arrays.asList("A", "B", "D", "E", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "Z", "T", "U", "V", "Ä", "Õ", "Ö", "Ü"));
     private int viga;
 
     public Sona(StringBuilder sona, int viga) {
@@ -18,7 +18,7 @@ public class Sona {
 
 
     public void algseadistaTähed() {
-        this.tähed = new ArrayList<>(Arrays.asList('A', 'B', 'D', 'E', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'Ä', 'Õ', 'Ö', 'Ü'));
+        this.tähed = new ArrayList<>(Arrays.asList("A", "B", "D", "E", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "Z", "T", "U", "V", "Ä", "Õ", "Ö", "Ü"));
     }
 
     public int getViga() {
