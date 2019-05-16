@@ -1,3 +1,4 @@
+karltaal 295 4
 Karl 225 5
 Karl 195 4
 Karel 175 3
@@ -9,5 +10,6 @@ Karel 115 1
 Karel 110 2
 tester -5 1
 megatron -5 1
-adfs -30 0
+karl -30 0
 Martoolius -50 0
+karl -55 0

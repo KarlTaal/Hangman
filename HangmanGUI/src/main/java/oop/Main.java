@@ -31,7 +31,6 @@ public class Main extends Application {
         peaLava.setWidth(1000);
         peaLava.setHeight(700);
         peaLava.setScene(mainMenu(peaLava));
-        //peaLava.setScene(nimeKüsimine(peaLava));
         peaLava.show();
     }
 
@@ -43,7 +42,7 @@ public class Main extends Application {
         BorderPane juur = new BorderPane();
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(4+1);
+        grid.setHgap(5);
         grid.setVgap(5);
 
         Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
@@ -58,11 +57,11 @@ public class Main extends Application {
 
         juur.widthProperty().addListener(me -> {
             mang.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
-            exit.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 2 + 1));
+            exit.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             scoreb.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             intro.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             mang.setFont(new Font(juur.getWidth() / 30));
-            scoreb.setFont(new Font(juur.getWidth() / (25 + 5)));
+            scoreb.setFont(new Font(juur.getWidth() / 30));
             exit.setFont(new Font(juur.getWidth() / 30));
             intro.setFont(new Font(juur.getWidth() / 30));
 
@@ -87,13 +86,14 @@ public class Main extends Application {
 
         grid.add(mang, 0, 0);
         grid.add(scoreb, 0, 2 - 1);
-        grid.add(intro,0,2);
-        grid.add(exit, 0, 1 + 1+1);
+        grid.add(intro, 0, 2);
+        grid.add(exit, 0, 1 + 1 + 1);
         juur.setCenter(grid);
         Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
         return stseen;
     }
-    public static Scene opetus(Stage peaLava){
+
+    public static Scene opetus(Stage peaLava) {
         BorderPane juur = new BorderPane();
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -106,9 +106,9 @@ public class Main extends Application {
         b.setAlignment(Pos.CENTER);
 
         juur.widthProperty().addListener(me -> {
-            info.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(),1));
+            info.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 1));
             info.setFont(new Font(juur.getWidth() / 15));
-            b.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(),1));
+            b.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 1));
             b.setFont(new Font(juur.getWidth() / 30));
         });
         b.setOnMouseClicked(me -> {
@@ -116,7 +116,7 @@ public class Main extends Application {
         });
 
         grid.add(info, 0, 0);
-        grid.add(b,0,1);
+        grid.add(b, 0, 1);
 
         Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
         ColorInput input = new ColorInput();
@@ -153,7 +153,7 @@ public class Main extends Application {
 
 
         juur.widthProperty().addListener(me -> {
-            back.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(),3));
+            back.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             info.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             info2.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
             info3.prefWidthProperty().bind(Bindings.divide(juur.widthProperty(), 3));
@@ -175,8 +175,8 @@ public class Main extends Application {
                 Label t = new Label(tükid[1]);
                 Label k = new Label(tükid[2]);
 
-                i = i+1;
-                if (i==11)
+                i = i + 1;
+                if (i == 11)
                     break;
 
                 e.setAlignment(Pos.CENTER);
@@ -211,7 +211,7 @@ public class Main extends Application {
         grid.add(info, 0, 0);
         grid.add(info2, 1, 0);
         grid.add(info3, 2, 0);
-        grid.add(back,1,11);
+        grid.add(back, 1, 11);
 
         Blend blendEffect = new Blend(BlendMode.DIFFERENCE);
         ColorInput input = new ColorInput();
@@ -220,7 +220,6 @@ public class Main extends Application {
         Scene stseen = new Scene(juur, peaLava.getWidth(), peaLava.getHeight());
         return stseen;
     }
-
 
 
     public static Scene nimeKüsimine(Stage peaLava) {
@@ -391,10 +390,6 @@ public class Main extends Application {
 
     }
 
-    public static void edutabel(Scene scene) {
-
-    }
-
     //Loob, kuvab ja haldab tegevusi, mis on seatud mängus olevate nuppude ja infoga.
     public static void NupudjaInfo(Sona sona, Text arvatav, BorderPane juur, Scene stseen, koikSonad koiksonad, Mangija mangija) {
         ////////////////////////////////////////////// paremal oleva info kood
@@ -410,7 +405,6 @@ public class Main extends Application {
         info.add(vigu, 0, 2);
         Label[] infotekstid = {skoor, arvatud, vigu};
         for (Label label : infotekstid) {
-            //label.setStyle("-fx-border-color: black;");
             label.setFont(new Font(juur.getWidth() / 25));
             juur.widthProperty().addListener(me -> {
                 label.setFont(new Font(juur.getWidth() / 25));
@@ -542,7 +536,6 @@ public class Main extends Application {
     public static void uusSõna(Sona sona, koikSonad koiksonad, Text arvatav, HBox h1, HBox h2) {
         sona.setSona(new StringBuilder(koiksonad.annaSõna()));
         sona.setViga(0);
-        //System.out.println(sona.getSona());
         sona.algseadistaTähed();
         arvatav.setText(sona.peidetudTahtedega().toString());
         for (Node child : h1.getChildren()) {
@@ -556,7 +549,7 @@ public class Main extends Application {
 
 
     public static void Timer(BorderPane juur, Stage peaLava, Mangija mangija) {
-        Integer STARTTIME = 5;  //Aeg sekundites.
+        Integer STARTTIME = 240;  //Aeg sekundites.
         Label timerLabel = new Label();
         IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
 

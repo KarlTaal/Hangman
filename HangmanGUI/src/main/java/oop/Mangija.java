@@ -11,10 +11,6 @@ public class Mangija implements Comparable<Mangija> {
         this.arvatudSonu = arvatudSonu;
     }
 
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
-    }
-
     public int getSkoor() {
         return skoor;
     }

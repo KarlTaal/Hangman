@@ -85,22 +85,4 @@ public class Sona {
     public Integer suvalineArv(int alumine, int ulemine) {
         return (alumine + (int) (Math.random() * ((ulemine - alumine) + 1)));
     }
-
-    //tagastab dongeri vastavalt vigade arvule
-    public String dongerRating(int viga) {
-        if (viga == 1) {
-            return ("༼つ ◕_◕ ༽つ  viga: 1");
-        } else if (viga == 2) {
-            return ("(งಠل͜ಠ)ง  viga: 2");
-        } else if (viga == 3) {
-            return ("໒( • ͜ʖ • )७  viga: 3");
-        } else if (viga == 4) {
-            return ("( * ಥ ⌂ ಥ * )  viga: 4");
-        } else if (viga == 5) {
-            return ("( ✖ _ ✖ ) viga: 5 (oh man sorry u dead)");
-        }
-        return null;
-    }
-
-
 }
