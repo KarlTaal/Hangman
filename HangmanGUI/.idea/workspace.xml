@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90546564-fced-4829-8420-4898a70c1823" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Hangman/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/Edetabel.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/Hangman.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/hangman_sonad.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/out/production/Hangman/Edetabel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/out/production/Hangman/Hangman.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/out/production/Hangman/Mangija.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/out/production/Hangman/Sona.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/src/Edetabel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/src/Hangman.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/src/Mangija.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hangman/src/Sona.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Edetabel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Edetabel.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -55,20 +70,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/oop/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10580">
-              <caret line="551" column="31" selection-start-line="551" selection-start-column="31" selection-end-line="551" selection-end-column="31" />
+            <state relative-caret-position="7450">
+              <caret line="561" column="28" selection-start-line="561" selection-start-column="28" selection-end-line="561" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Edetabel.txt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oop/Edetabel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="15" column="49" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oop/koikSonad.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oop/Mangija.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oop/Sona.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Edetabel.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -99,8 +150,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/module-info.java" />
         <option value="$PROJECT_DIR$/src/main/java/oop/Sona.java" />
-        <option value="$PROJECT_DIR$/Edetabel.txt" />
         <option value="$PROJECT_DIR$/src/main/java/oop/Main.java" />
+        <option value="$PROJECT_DIR$/Edetabel.txt" />
       </list>
     </option>
   </component>
@@ -115,6 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -153,7 +205,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -288,13 +339,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12581000" />
+    <option name="totallyTimeSpent" value="12632000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1087" y="0" width="849" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10181237" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24461344" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -303,7 +354,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2708559" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.16793066" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -321,7 +372,7 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.015991472" />
+      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.038022812" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
@@ -344,8 +395,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/oop/Sona.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        <state relative-caret-position="1190">
+          <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -353,29 +404,29 @@
     <entry file="file://$PROJECT_DIR$/../../../kt2/Arvutiparandus.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/oop/Edetabel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="108">
           <caret line="15" column="49" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/oop/Mangija.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Edetabel.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="17">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/oop/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10580">
-          <caret line="551" column="31" selection-start-line="551" selection-start-column="31" selection-end-line="551" selection-end-column="31" />
+        <state relative-caret-position="7450">
+          <caret line="561" column="28" selection-start-line="561" selection-start-column="28" selection-end-line="561" selection-end-column="28" />
         </state>
       </provider>
     </entry>
